@@ -262,8 +262,8 @@ HANDLER(sm)
         case 25:
             CB(vt, TMT_MSG_CURSOR, "t");
             break;
-        case 9:
-            CB(vt, TMT_MSG_X10MOUSE, "t");
+        default:
+            CB(vt, TMT_MSG_SETMODE, &vt->pars[0]);
             break;
     }
 }
@@ -273,8 +273,8 @@ HANDLER(rm)
         case 25:
             CB(vt, TMT_MSG_CURSOR, "f");
             break;
-        case 9:
-            CB(vt, TMT_MSG_X10MOUSE, "f");
+        default:
+            CB(vt, TMT_MSG_UNSETMODE, &vt->pars[0]);
             break;
     }
 }

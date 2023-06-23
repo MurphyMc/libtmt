@@ -173,6 +173,13 @@ scrup(TMT *vt, size_t r, ssize_t n)
 
     if (n>0){
         TMTLINE *buf[n];
+        if (r == 0)
+        {
+            for (int i = 0; i < n; ++i)
+            {
+                CB(vt, TMT_MSG_SCROLL, &vt->screen.lines[i]->chars);
+            }
+        }
 
         memcpy(buf, vt->screen.lines + r, n * sizeof(TMTLINE *));
         memmove(vt->screen.lines + r, vt->screen.lines + r + n,
